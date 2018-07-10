@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Checkers</title>
+    <style>
+        .container{
+            margin:0px auto;
+            width:950px;
+            height:700px;
+        }
+        .space1{
+            background-color:black;
+            width:50px;
+            height:50px;
+            margin:3px -2px 3px -2px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .space2{
+            background-color:red;
+            width:50px;
+            height:50px;
+            margin:3px -2px 30px -2px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .row{
+            min-width:50px;
+            height:50px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {%for i in range (0,y):%}
+        <div class="row">
+            {%for j in range(0,x):%}
+            <div class="space{{(i+j)%2 + 1 }}"></div><!-- -->
+            {%endfor%}
+        </div>
+        {%endfor%}
+    </div>
+    
+</body>
+</html>

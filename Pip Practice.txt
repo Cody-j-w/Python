@@ -1,0 +1,25 @@
+1.
+pip install Django==1.11.9
+
+Output - collected, downloaded, and installed Django and pytz.
+
+2-3.
+Django and pytz are, as expected, not listed when the environment is deactivated.
+
+4. 
+pip install Django==1.11.9 when Django is already installed reinstalls the module using cached deactivated
+
+5.
+Freeze shows only packages installed in the environment, but also - according to the documentation - also shows the requirements set for the packages.
+
+6.
+requirements.txt contains the snapshots - the freezes - of installed packages when pip freeze was ran.
+
+7.
+Asked for confirmation before uninstalling, then proceeded as expected
+
+8.
+pip show Django, expectedly, doesn't show anything
+
+9.
+pip searchj Flask brings up a list of, what seem to be for the most part, Flask extensions and modules

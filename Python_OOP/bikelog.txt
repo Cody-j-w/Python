@@ -1,0 +1,36 @@
+>>> bike1 = Bike(200,"25mph")
+>>> bike2 = Bike(1500, "40mph")
+>>> bike3 = Bike(25, "72mph")
+>>>
+>>> bike1.ride()
+Wheee!
+you had ridden for 10 miles!
+>>> bike1.ride()
+Wheee!
+you had ridden for 20 miles!
+>>> bike1.ride()
+Wheee!
+you had ridden for 30 miles!
+>>> bike1.reversing()
+Backing up! Backing up! Backing up!
+>>> bike1.displayInfo()
+costs 200, goes 25mph, has gone 25 miles.
+>>> bike2.ride()
+Wheee!
+you had ridden for 10 miles!
+>>> bike2.ride()
+Wheee!
+you had ridden for 20 miles!
+>>> bike2.reversing()
+Backing up! Backing up! Backing up!
+>>> bike2.displayInfo()
+costs 1500, goes 40mph, has gone 15 miles.
+>>> bike3.reversing()
+Can't back up any further!
+>>> bike3.reversing()
+Can't back up any further!
+>>> bike3.reversing()
+Can't back up any further!
+>>> bike3.displayInfo()
+costs 25, goes 72mph, has gone 0 miles.
+>>>
