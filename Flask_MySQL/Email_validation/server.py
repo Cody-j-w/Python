@@ -35,6 +35,7 @@ def register():
         data = {'name': request.form['email']}
         mysql.query_db(query, data)
         return redirect('/results')
+        
 @app.route('/results')
 def show():
     emails = mysql.query_db("SELECT * FROM emails")
