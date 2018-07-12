@@ -17,5 +17,6 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^wordgen/', include('apps.wordgen.urls')),
+    url(r'^$', include('apps.wordgen.urls')),
+    url(r'^wordgen', include('apps.wordgen.urls')),
 ]
