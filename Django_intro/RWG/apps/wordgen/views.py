@@ -4,6 +4,8 @@ from django.utils.crypto import get_random_string
 
 def index(request):
     request.session['random'] = get_random_string(length=14)
+    if 'attempts' not in request.session:
+        request.session['attempts'] = 1
     request.session['attempts'] += 1
     
 
