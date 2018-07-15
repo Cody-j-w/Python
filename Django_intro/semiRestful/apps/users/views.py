@@ -18,7 +18,7 @@ def create(request):
     else:
         
         user = User.objects.create(first_name = request.POST['first_name'], last_name = request.POST['last_name'], email = request.POST['email'])
-        return redirect ('users/'+str(user.id))
+        return redirect (str(user.id))
 
 def show(request, id):
     return render(request, 'users/user.html', {'users': User.objects.get(id = id)})
@@ -26,15 +26,15 @@ def show(request, id):
 def update(request, id):
     errors = User.objects.basic_validator(request.POST)
     if len(errors):
-        for tag, error in errors.iteritems():
-            messages.error(request, error, extra_tags=tag)
-        return redirect('/')
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect('/users/'+ str(id) + '/edit')
     else:
         user = User.objects.get(id = id)
         user.first_name = request.POST['first_name']
         user.last_name = request.POST['last_name']
         user.email = request.POST['email']
-        return redirect('{{id}}')
+        return redirect('/users/' + str(id))
 
 def edit(request, id):
     return render(request, 'users/edit.html', {'users': User.objects.get(id = id)})

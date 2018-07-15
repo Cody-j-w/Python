@@ -11,14 +11,14 @@
     <div class="container">
         <div class="jumbotron bg-dark">
 
-            <form action='users/update' method='post'>
+            <form action='update' method='post'>
                 {%csrf_token%}
                 <h4 class="text-info mt-2">Please enter your new first name.</h4>
-                <input type="text" class='form-control w-25' name='first_name' placeholder='users.first_name'><br>
+                <input type="text" class='form-control w-25' name='first_name' placeholder='{{users.first_name}}'><br>
                 <h4 class="text-info mt-2">Please enter your new last name.</h4>
-                <input type="text" class='form-control w-25' name='last_name' placeholder='users.last_name'><br>
+                <input type="text" class='form-control w-25' name='last_name' placeholder='{{users.last_name}}'><br>
                 <h4 class="text-info mt-2">Please enter your new E-mail.</h4>
-                <input type="email" class='form-control w-25' name='email' placeholder='users.email'><br>
+                <input type="email" class='form-control w-25' name='email' placeholder='{{users.email}}'><br>
                 <hr class="mb-4  bg-info">
                 <input type="submit" class='form-control w-25 btn btn-info' name='submit' value='Submit'>
             </form>
