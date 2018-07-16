@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <title>Amadon</title>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron bg-dark">
+            <table class="table table-striped table-bordered table-hover text-info table-grid table-dark w-50">
+                <thead>
+                    <tr>
+                        <th scope="col">item name</th>
+                        <th scope="col">price</th>
+                        <th scope="col">purchase</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for x in items%}
+                    <tr>
+                        <td>{{x.item_name}}</td>
+                        <td>{{x.item_price}}</td>
+                        <td><form action="/purchase" method="post">
+                            {% csrf_token %}
+                            <hr class="bg-info">
+                            <select class="form-control w-50 d-inline-block text-light border border-info bg-dark" name='quantity'>
+                               <option>1</option>
+                               <option>2</option>
+                               <option>3</option>
+                               <option>4</option>
+                               <option>5</option>
+                            </select>
+                            <input type='hidden' name='product_id' value='{{x.id}}' />
+                            <button type='submit' class="btn btn-outline-info text-light align-top">Buy!</button>
+                            <hr class="bg-info">
+                        </form></td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
