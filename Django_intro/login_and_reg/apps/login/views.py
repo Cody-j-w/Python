@@ -21,12 +21,17 @@ def register(request):
 
 
 def login(request):
-    user = User.objects.get(email=request.POST['email'])
-    if bcrypt.checkpw(request.POST['password'].encode(), user.password.encode()):
-        return redirect('/success/'+ str(user.id))
-    else:
-        errors['passauth'] = 'E-mail and/or password incorrect.'
+    errors = {}
+    if not User.objects.filter(email=request.POST['email']).exists():
+        errors['emailauth'] = 'E-mail and/or password incorrect.'
         return redirect('/')
+    else:
+        user = User.objects.filter(email=request.POST['email'])
+        if bcrypt.checkpw(request.POST['password'].encode(), user.password.encode()):
+            return redirect('/success/'+ str(user.id))
+        else:
+            errors['passauth'] = 'E-mail and/or password incorrect.'
+            return redirect('/')
 
 def success(request, id):
     return render(request, 'login/success.html', {'user': User.objects.get(id=id)})
