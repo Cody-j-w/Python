@@ -50,13 +50,14 @@ class UserManager(models.Manager):
 class MessageManager(models.Manager):
     def message_creator(self,postData):
         post = Message.objects.create(message = postData['message'], poster = User.objects.get(id=postData['user_id']))
+    def message_deletor(self,postData):
+        deleted = Message.objects.get(id=postData['message_id'])
+        deleted.delete()
 
 class CommentManager(models.Manager):
     def comment_creator(self,postData):
         commentor = User.objects.get(id=postData['user_id'])
         message = Message.objects.get(id=postData['message_id'])
-        print(commentor)
-        print(message)
         comment = Comment.objects.create(comment = postData['comment'], parent_message= message, commenter = commentor)
 
 class User(models.Model):

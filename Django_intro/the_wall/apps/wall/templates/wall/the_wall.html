@@ -10,7 +10,8 @@
 <body>
     <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-                <h3 class="text-light">Welcome to T H E  W A L L, {{request.session.user}}</h3>
+                <h3 class="text-light col-11">Welcome to T H E  W A L L, {{request.session.user}}</h3>
+                <a href="/logout" class="btn btn-dark text-info col-1">Log out</a>
                 </nav>
         <div class="jumbotron bg-dark">
             <div class="d-block">
@@ -31,7 +32,14 @@
                     <tbody>
                             {%for message in posts%}
                             <tr>
-                            <td><p class="text-light lead">{{message.poster.first_name}} at {{message.created_at}}</p>
+                            <td><p class="text-light lead col-10 d-inline-block">{{message.poster.first_name}} at {{message.created_at}}</p>
+                                {%if request.session.user_id == message.poster.id%}
+                                <form action='/delete_message' class="d-inline-block" method='post'>
+                                    {%csrf_token%}
+                                    <input type="hidden" name="message_id" value="{{message.id}}">
+                                    <input type="submit" value='delete' class="btn btn-danger text-dark">
+                                </form>
+                                {%endif%}
                             <h4>{{message.message}}</h6>
                                 {%for comment in message.child_comments.all%}
                               <p class="text-light">{{comment.commenter.first_name}}| {{comment.comment}}</p>

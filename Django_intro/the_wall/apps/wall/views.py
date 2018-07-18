@@ -48,6 +48,10 @@ def create_comment(request):
     errors = Comment.objects.comment_creator(request.POST)
     return redirect('/wall')
 
+def delete_message(request):
+    errors = Message.objects.message_deletor(request.POST)
+    return redirect('/wall')
+
 def logout(request):
     request.session.clear()
     return redirect('/')
